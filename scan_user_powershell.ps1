@@ -10,7 +10,7 @@ $scan_folder = $main_dir + "scans"
 
 mkdir $scan_folder
 
-New-SmbShare -Name "scans" -path $scan_folder -FullAccess scans
+New-SmbShare -Name "scans" -path $scan_folder -FullAccess scans, $env:UserName, Everyone
 
 Read-Host -Prompt "Press Enter to exit"
 
