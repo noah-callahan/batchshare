@@ -1,12 +1,15 @@
 Legacy Stuff
 
-@echo off
-net user scans Scanner#1 /add /comment:"account for scanning" /passwordchg:NO
-wmic useraccount where "name='scans'" set passwordexpires=FALSE
-REM net localgroup "GROUP" USERNAME/add
-mkdir C:\scans
-net share scans="c:\scans" /grant:%ComputerName%\scans,FULL
-exit
+  @echo off
+  net user scans Scanner#1 /add /comment:"account for scanning" /passwordchg:NO
+  wmic useraccount where "name='scans'" set passwordexpires=FALSE
+  REM net localgroup "GROUP" USERNAME/add
+  mkdir C:\scans
+  net share scans="c:\scans" /grant:%ComputerName%\scans,FULL
+  exit
+
+  -Get Users
+  net user
 
 
 
@@ -15,23 +18,31 @@ exit
 
 Powershell Stuff
 
-"Enter password for scans user. Enter d for default 'Scanner#1' password: "
-$Password = Read-Host -AsSecureString
+  "Enter password for scans user. Enter d for default 'Scanner#1' password: "
+  $Password = Read-Host -AsSecureString
 
-New-LocalUser -Name "scans" -Password $Password -Description "account for scanning" -PasswordNeverExpires -AccountNeverExpires
+  New-LocalUser -Name "scans" -Password $Password -Description "account for scanning" -PasswordNeverExpires -AccountNeverExpires
 
-$Destination = $Env:userprofile
-$main_dir = ($Destination[0..2] -join "")
+  $Destination = $Env:userprofile
+  $main_dir = ($Destination[0..2] -join "")
 
-$scan_folder = $main_dir + "scans"
+  $scan_folder = $main_dir + "scans"
 
-mkdir $scan_folder
+  mkdir $scan_folder
 
-New-SmbShare -Name "scans" -path $scan_folder -FullAccess scans
+  New-SmbShare -Name "scans" -path $scan_folder -FullAccess scans
 
-Read-Host -Prompt "Press Enter to exit"
+  Read-Host -Prompt "Press Enter to exit"
 
-
+  -Get Local Users
+  Get-WmiObject -Class Win32_UserAccount -Filter  "LocalAccount='True'" 
+  
+  -Remove Local User
+  Remove-LocalUser -name "name"
+  
+  -Remove SMB Share
+  Remove-SmbShare =name "name"
+  
 
 
 
