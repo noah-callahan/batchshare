@@ -1,5 +1,20 @@
-"Enter password for scans user. Enter d for default 'Scanner#1' password: "
-$Password = Read-Host -AsSecureString
+$global:Password = $null
+
+function Get-Input(){
+    "Enter d for default password 'Scanner#1', or p to enter a password: "
+    $input = Read-Host
+    If ($input -eq 'd'){
+        $global:Password = ConvertTo-SecureString "Scanner#1" -AsPlainText -Force
+    } elseif ($input -eq 'p') {
+        "Enter a password: "
+        $global:Password = Read-Host -AsSecureString
+    } else {
+        "Invalid input"
+        Get-Input
+    }
+}
+
+Get-Input
 
 New-LocalUser -Name "scans" -Password $Password -Description "account for scanning" -PasswordNeverExpires -AccountNeverExpires
 
