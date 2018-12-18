@@ -43,6 +43,8 @@ Powershell Stuff
   -Remove SMB Share
   Remove-SmbShare =name "name"
   
+  -Get Printers
+   Get-Printer
 
 
 
@@ -50,4 +52,13 @@ Powershell Stuff
 Windows + R Stuff
 
 Add Account(No local users and groups) - netplwiz
+
+Open windows firewall - FIREWALL.CPL
+
+Open Devices & Printers - control printers
+
+Computer Management - compmgmt.msc
+
+Computer Info - msinfo32
+
 
