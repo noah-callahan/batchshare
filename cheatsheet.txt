@@ -61,4 +61,5 @@ Computer Management - compmgmt.msc
 
 Computer Info - msinfo32
 
+Network Connections - ncpa.cpl
 
