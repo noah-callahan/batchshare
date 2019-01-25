@@ -10,6 +10,9 @@ Legacy Stuff
 
   -Get Users
   net user
+  
+  -password never expire for local user
+   wmic useraccount where “Name=’scans'” set PasswordExpires=false
 
 
 
