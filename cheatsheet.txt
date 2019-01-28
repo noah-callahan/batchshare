@@ -12,7 +12,7 @@ Legacy Stuff
   net user
   
   -password never expire for local user
-   wmic useraccount where “Name=’scans'” set PasswordExpires=false
+   wmic useraccount where “Name='scans'” set PasswordExpires=false
 
 
 
