@@ -1,0 +1,14 @@
+\\invis.vbs
+Set WshShell = CreateObject("WScript.Shell" ) 
+WshShell.Run chr(34) & "C:\temp\script.bat" & Chr(34), 0 
+Set WshShell = Nothing 
+\\invis.vbs
+
+\\script.bat
+@echo off
+:loop
+start C:\temp\test.jpg
+timeout /t 900
+goto loop
+\\script.bat
+
