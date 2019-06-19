@@ -15,6 +15,12 @@ Legacy Stuff
    wmic useraccount where “Name='scans'” set PasswordExpires=false
 
 
+  -uninstall program from cmd
+  wmic
+  product get name (get list of program msi files)
+  product where name="Google Chrome" call uninstall
+  y when prompted 
+
 
 
 
